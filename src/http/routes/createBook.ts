@@ -22,3 +22,4 @@ export async function createBook(app: FastifyInstance){
     return reply.status(201).send({bookId: book.id})
 })
 }
+
