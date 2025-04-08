@@ -20,10 +20,14 @@ export function deleteBook(app: FastifyInstance){
     }
 
     const deleteBook = await prisma.book.delete({
-        where: {
+        where: {    
             id: bookId,
         }
     })
+
+    if(!deleteBook){
+        return reply.status(400).send({message: 'Book not deleted'})
+    }
 
     return reply.code(204).send({message: 'Book deleted'})
 })
